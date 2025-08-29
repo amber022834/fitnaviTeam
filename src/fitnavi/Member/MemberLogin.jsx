@@ -10,8 +10,8 @@ function MemberLogin() {
   const [showPassword, setShowPassword] = useState(false);
 
   const validUsers = [
-    { account: "huahua0303@gmail.com", password: "1234", role: "member" }, //加role(Jodi)
-    { account: "Jackcoach@gmail.com", password: "222", role: "coach" },//加role(Jodi)
+    { account: "member", password: "123", role: "member" }, //加role(Jodi)
+    { account: "coach", password: "123", role: "coach" },//加role(Jodi)
   ];
 
   const handleLogin = (e) => {
@@ -41,18 +41,18 @@ function MemberLogin() {
     if (match !== null) {
       localStorage.setItem("token", account); // 登入成功存進localStorage(Jodi)
       localStorage.setItem("role", match.role);//儲存使用者身份(Jodi)
-      if (account === "Jackcoach@gmail.com") {
+      if (account === "coach") {
         navigate("/CoachDashboardList");
       } else {
         navigate("/memberlist");
       }
     } else {
       if (!accountExists && !passwordMatches) {
-        alert("帳號密碼錯誤");
+        alert("帳號密碼錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）");
       } else if (!accountExists) {
-        alert("帳號錯誤");
+        alert("帳號錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）");
       } else {
-        alert("密碼錯誤");
+        alert("密碼錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）");
       }
     }
   };
