@@ -16,7 +16,7 @@ function LoginSuccess() {
 
                         <button onClick={()=>navigate('/MemberLogin')}>
                             <span className='success-text'>重新登入</span>
-                            <img src="./images/search.svg" alt="" />
+                            <img src="./images/search.svg" alt="重新登入圖片" />
                             </button>
                     </div>
 
