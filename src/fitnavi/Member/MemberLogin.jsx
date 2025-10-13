@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MemberLogin.scss";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 function MemberLogin() {
   const navigate = useNavigate();
