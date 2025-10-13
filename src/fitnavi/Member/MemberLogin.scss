@@ -1,460 +1,426 @@
 @use "../reset.scss";
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
 
 @font-face {
-    font-family: "Mantou Sans";
-    src: url(../../assets/MantouSans-Regular.ttf);
+  font-family: "Mantou Sans";
+  src: url(../../assets/MantouSans-Regular.ttf);
 }
 
 .MemberLogin {
-    padding: 120px 50px;
-    width: 100vw;
+  padding: 120px 50px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  //height: 80vh;
+
+  @media (min-width: 1025px) {
+    margin-top: 180px;
+  }
+
+  .MemberLogin-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+  }
 
-   height: 80vh;
+  .MemberLogin-title {
+    display: inline-flex;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    // position: relative;
+    // left: 200px;
+    // top: 25px;
+    margin: 0px;
 
+    //background: var(--white, #FEFCF7);
+    color: var(--dark, #3a2c19);
+    text-align: center;
+    /* heading/標題3 */
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 3.2px;
+  }
 
+  .KeyinEmailAccount {
+    display: flex;
+    width: 600px;
+    padding: 60px 95px 70px 95px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 
+    border-radius: 20px;
+    border: 0.8px solid var(--dark, #3a2c19);
 
-    @media(min-width:1025px) {
-        margin-top: 180px;
+    label {
+      color: var(--dark, #3a2c19);
+      /* 段落/16 */
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      /* 24px */
+      letter-spacing: 1.6px;
     }
 
-    .MemberLogin-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+    input {
+      width: 400px;
+      height: 40px;
+      border-radius: 10px;
+      border: 0.6px solid var(--dark, #3a2c19);
+      background: #fff;
 
-    .MemberLogin-title {
-        display: inline-flex;
-        padding: 10px 30px;
-        justify-content: center;
-        align-items: center;
-        // position: relative;
-        // left: 200px;
-        // top: 25px;
-        margin: 0px;
-
-        background: var(--white, #FEFCF7);
-        color: var(--dark, #3A2C19);
-        text-align: center;
-        /* heading/標題3 */
+      &::placeholder {
+        color: var(--gray, #989794);
+        /* 段落/14 */
         font-family: "Noto Sans TC", sans-serif;
-        font-size: 32px;
+        font-size: 14px;
         font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        letter-spacing: 3.2px;
+        font-weight: 500;
+        line-height: 140%;
+        /* 19.6px */
+        letter-spacing: 1.4px;
+        padding-left: 10px;
+      }
+
+      &:focus {
+        outline: none;
+        border-radius: 10px;
+        border: 2px solid var(--primary, #ff8740);
+        box-shadow: 1px 2px 4px 0px rgba(58, 44, 25, 0.2);
+      }
     }
 
+    button {
+      align-self: center;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+      width: 200px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--primary, #ff8740);
+      border: none;
+      cursor: pointer;
 
-    .KeyinEmailAccount {
-        display: flex;
-        width: 600px;
-        padding: 60px 95px 70px 95px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--white, #fefcf7);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
 
-        border-radius: 20px;
-        border: 0.8px solid var(--dark, #3A2C19);
+      .login-text {
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
 
+      img {
+        width: 24px;
+        height: 24px;
+        opacity: 0;
+        position: absolute;
+        right: 30px;
+        transition: opacity 0.3s ease;
+      }
 
-        label {
-            color: var(--dark, #3A2C19);
-            /* 段落/16 */
-            font-family: "Noto Sans TC", sans-serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 150%;
-            /* 24px */
-            letter-spacing: 1.6px;
-        }
-
-        input {
-            width: 400px;
-            height: 40px;
-            border-radius: 10px;
-            border: 0.6px solid var(--dark, #3A2C19);
-            background: #FFF;
-
-            &::placeholder {
-                color: var(--gray, #989794);
-                /* 段落/14 */
-                font-family: "Noto Sans TC", sans-serif;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
-                /* 19.6px */
-                letter-spacing: 1.4px;
-                padding-left: 10px;
-            }
-
-            &:focus {
-                outline: none;
-                border-radius: 10px;
-                border: 2px solid var(--primary, #FF8740);
-                box-shadow: 1px 2px 4px 0px rgba(58, 44, 25, 0.20);
-            }
-
-
-        }
-
-        button {
-            align-self: center;
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            width: 200px;
-            height: 40px;
-            border-radius: 999px;
-            background: var(--primary, #FF8740);
-            border: none;
-            cursor: pointer;
-
-            font-family: "Noto Sans TC", sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--white, #FEFCF7);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-
-            .login-text {
-                transition: transform 0.3s ease, color 0.3s ease;
-            }
-
-            img {
-                width: 24px;
-                height: 24px;
-                opacity: 0;
-                position: absolute;
-                right: 30px;
-                transition: opacity 0.3s ease;
-            }
-
-            &:hover {
-
-                justify-content: center;
-                align-items: center;
-                border-radius: 999px;
-                background: var(--white, #FEFCF7);
-                border: 1px solid var(--primary, #FF8740);
-
-                .login-text {
-                    transform: translateX(-10px); // 向左滑動
-                    color: var(--primary, #FF8740);
-                }
-
-                img {
-                    opacity: 1;
-                    // transform: translateX(0); // icon 滑進來
-                }
-            }
-
-            &:active {
-                outline: none;
-
-                .login-text {
-                    color:  #FF8740;
-                    font-size: 16px;
-                    font-weight: 500;
-                    letter-spacing: 1.6px;
-                }
-
-                img {
-                    width: 20px;
-                    height: 20px;
-                }
-            }
-
-        }
-
-    }
-
-    .MemberLogin-option {
-        position: relative;
-        top: -100px;
-        display: flex;
-        flex-direction: row;
+      &:hover {
         justify-content: center;
         align-items: center;
-        gap: 200px;
-        margin-top: 60px;
+        border-radius: 999px;
+        background: var(--white, #fefcf7);
+        border: 1px solid var(--primary, #ff8740);
 
-        button {
-            color: var(--dark, #3A2C19);
-            /* 段落/16 */
-            font-family: "Noto Sans TC", sans-serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 150%;
-            /* 24px */
-            letter-spacing: 1.6px;
-            padding: 0px;
-            background-color: transparent;
-
-            &:hover {
-                border: none;
-                outline: none;
-            }
+        .login-text {
+          transform: translateX(-10px); // 向左滑動
+          color: var(--primary, #ff8740);
         }
 
-        .MemberLogin-forgetpassword {
-            color: #FF8740;
+        img {
+          opacity: 1;
+          // transform: translateX(0); // icon 滑進來
+        }
+      }
+
+      &:active {
+        outline: none;
+
+        .login-text {
+          color: #ff8740;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 1.6px;
         }
 
-        span {
-            color: #FF8740;
+        img {
+          width: 20px;
+          height: 20px;
         }
+      }
     }
+    .googleLogin {
+        align-self: center;
+        margin-top: 20px;
+    }
+  }
+
+  .MemberLogin-option {
+    position: relative;
+    top: -100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    margin-top: 60px;
+
+    button {
+      color: var(--dark, #3a2c19);
+      /* 段落/16 */
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      /* 24px */
+      letter-spacing: 1.6px;
+      padding: 0px;
+      background-color: transparent;
+
+      &:hover {
+        border: none;
+        outline: none;
+      }
+    }
+
+    .MemberLogin-forgetpassword {
+      color: #ff8740;
+    }
+
+    span {
+      color: #ff8740;
+    }
+  }
 }
-
-
-
-
 
 @media (max-width: 1024px) {
+  .MemberLogin {
+    padding: 5rem;
+    width: 100vw;
+  }
 
-    .MemberLogin {
-        padding: 5rem;
-        width: 100vw;
+  .MemberLogin-form {
+    width: 320px;
+  }
+
+  .MemberLogin-title {
+    font-size: 20px !important;
+  }
+
+  .KeyinEmailAccount {
+    border: none !important;
+    width: 320px;
+    /* 不用 !important，除非有衝突 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px !important;
+
+    button {
+      width: 320px !important;
+      border-radius: 8px !important;
+      background: var(--primary, #ff8740);
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+
+      .login-text {
+        color: #fff;
+        text-align: center;
+        font-family: "Noto Sans TC", sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+        /* 19.6px */
+        letter-spacing: 1.4px;
+      }
     }
 
-    .MemberLogin-form {
-        width: 320px;
+    button:hover {
+      background: var(--primary, #ff8740) !important;
+      border: none !important;
+
+      .login-text {
+        transform: none !important;
+        color: var(--white, #fefcf7) !important;
+      }
+
+      img {
+        opacity: 0 !important;
+      }
+    }
+  }
+
+  .input-wrapper,
+  .password-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+
+    label {
+      color: var(--dark, #3a2c19);
+      text-align: left;
+      font-family: "Noto Sans TC", sans-serif !important;
+      font-size: 14px !important;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%;
+      /* 19.6px */
+      letter-spacing: 1.4px;
+      background: var(--white, #fefcf7) !important;
+      position: absolute;
+      top: -20px;
+      left: 1.5rem;
+      padding: 8px;
+      padding: 8px;
     }
 
-    .MemberLogin-title {
-        font-size: 20px !important;
-    }
+    input {
+      width: 320px !important;
+      height: 60px !important;
+      border-radius: 12px !important;
+      border: 0.5px solid var(--dark, #3a2c19) !important;
+      margin: 0 auto;
+      padding-left: 1rem;
 
-    .KeyinEmailAccount {
-        border: none !important;
-        width: 320px;
-        /* 不用 !important，除非有衝突 */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px !important;
-
-
-
-        button {
-            width: 320px !important;
-            border-radius: 8px !important;
-            background: var(--primary, #FF8740);
-            display: flex;
-            padding: 10px;
-            justify-content: center;
-            align-items: center;
-
-            .login-text {
-                color: #FFF;
-                text-align: center;
-                font-family: "Noto Sans TC", sans-serif;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 900;
-                line-height: 140%;
-                /* 19.6px */
-                letter-spacing: 1.4px;
-
-                
-            }
-        }
-
-        button:hover {
-            background: var(--primary, #FF8740) !important;
-            border: none !important;
-        
-            .login-text {
-              transform: none !important;
-              color: var(--white, #FEFCF7) !important;
-            }
-        
-            img {
-              opacity: 0 !important;
-            }
-          }
-    }
-
-    .input-wrapper,
-    .password-input-wrapper {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        position: relative;
-
-        label {
-            color: var(--dark, #3A2C19);
-            text-align: left;
-            font-family: "Noto Sans TC", sans-serif !important;
-            font-size: 14px !important;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 140%;
-            /* 19.6px */
-            letter-spacing: 1.4px;
-            background: var(--white, #FEFCF7) !important;
-            position: absolute;
-            top: -20px;
-            left: 1.5rem;
-            padding: 8px;
-            padding: 8px;
-
-
-        }
-
-        input {
-            width: 320px !important;
-            height: 60px !important;
-            border-radius: 12px !important;
-            border: 0.5px solid var(--dark, #3A2C19) !important;
-            margin: 0 auto;
-            padding-left: 1rem;
-
-            &::placeholder {
-                color: var(--gray, #989794);
-                text-align: left;
-                /* 段落/14 */
-                font-family: "Noto Sans TC", sans-serif;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
-                /* 19.6px */
-                letter-spacing: 1.4px;
-            }
-        }
-
-        .password-div {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-
-            .password-label {
-                color: var(--dark, #3A2C19);
-                text-align: left;
-                font-family: "Noto Sans TC", sans-serif !important;
-                font-size: 14px !important;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
-                /* 19.6px */
-                letter-spacing: 1.4px;
-                background: var(--white, #FEFCF7) !important;
-                position: absolute;
-                top: -20px;
-                left: 4.5rem;
-                padding: 8px;
-                padding: 8px;
-            }
-
-            .input-eye {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-
-                .eye-icon {
-                    right: 4rem !important;
-                }
-            }
-        }
-
-
-    }
-
-
-    .MemberLogin-option {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 5rem !important;
-
-
-
-        button {
-            color: var(--gray, #989794) !important;
-            /* 段落/16 */
-            font-family: "Noto Sans TC", sans-serif;
-            font-size: 14px !important;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 150%;
-            /* 24px */
-            letter-spacing: 1.6px;
-            padding: 0px;
-            background-color: transparent;
-            white-space: nowrap !important;
-
-            &:hover {
-                border: none;
-                outline: none;
-            }
-        }
-
-        .MemberLogin-forgetpassword {
-            color: #FF8740 !important;
-
-        }
-
-        span {
-            color: #FF8740;
-
-        }
-    }
-
-
-}
-
-
-
-
-
-
-
-
-@media (min-width: 1025px) {
-    .MemberLogin-title {
-        position: absolute;
-        top: 5rem;
-    }
-
-    .MemberLogin {
-        margin-top: 180px;
+      &::placeholder {
+        color: var(--gray, #989794);
+        text-align: left;
+        /* 段落/14 */
+        font-family: "Noto Sans TC", sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        /* 19.6px */
+        letter-spacing: 1.4px;
+      }
     }
 
     .password-div {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      .password-label {
+        color: var(--dark, #3a2c19);
+        text-align: left;
+        font-family: "Noto Sans TC", sans-serif !important;
+        font-size: 14px !important;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        /* 19.6px */
+        letter-spacing: 1.4px;
+        background: var(--white, #fefcf7) !important;
+        position: absolute;
+        top: -20px;
+        left: 4.5rem;
+        padding: 8px;
+        padding: 8px;
+      }
+
+      .input-eye {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
 
-        label {
-            text-align: left;
+        .eye-icon {
+          right: 4rem !important;
         }
-
-        .input-eye {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
+      }
     }
+  }
+
+  .MemberLogin-option {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem !important;
+
+    button {
+      color: var(--gray, #989794) !important;
+      /* 段落/16 */
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 14px !important;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      /* 24px */
+      letter-spacing: 1.6px;
+      padding: 0px;
+      background-color: transparent;
+      white-space: nowrap !important;
+
+      &:hover {
+        border: none;
+        outline: none;
+      }
+    }
+
+    .MemberLogin-forgetpassword {
+      color: #ff8740 !important;
+    }
+
+    span {
+      color: #ff8740;
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .MemberLogin-title {
+    // position: absolute;
+    top: 5rem;
+  }
+
+  .MemberLogin {
+    margin-top: 180px;
+  }
+
+  .password-div {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      text-align: left;
+    }
+
+    .input-eye {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

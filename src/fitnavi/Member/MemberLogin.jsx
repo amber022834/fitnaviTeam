@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./MemberLogin.scss";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 
 function MemberLogin() {
   const navigate = useNavigate();
@@ -11,52 +12,57 @@ function MemberLogin() {
 
   const validUsers = [
     { account: "member", password: "123", role: "member" }, //加role(Jodi)
-    { account: "coach", password: "123", role: "coach" },//加role(Jodi)
+    { account: "coach", password: "123", role: "coach" }, //加role(Jodi)
   ];
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    let match = null;
-    let accountExists = false;
-    let passwordMatches = false;
+    const matchedUser = validUsers.find(
+      (user) => user.account === account && user.password === password
+    );
 
-    for (let i = 0; i < validUsers.length; i++) {
-      const user = validUsers[i];
-
-      if (user.account === account && user.password === password) {
-        match = user;
-        break;
-      }
-
-      if (user.account === account) {
-        accountExists = true;
-      }
-
-      if (user.password === password) {
-        passwordMatches = true;
-      }
-    }
-
-    if (match !== null) {
+    if (matchedUser) {
       localStorage.setItem("token", account); // 登入成功存進localStorage(Jodi)
-      localStorage.setItem("role", match.role);//儲存使用者身份(Jodi)
-      if (account === "coach") {
+      localStorage.setItem("role", matchedUser.role); // 儲存使用者身份(Jodi)
+
+      if (matchedUser.role === "coach") {
         navigate("/CoachDashboardList");
-      } else {
+      } else if (matchedUser.role === "member") {
         navigate("/memberlist");
       }
-    } else {
-      if (!accountExists && !passwordMatches) {
-        alert("帳號密碼錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）");
-      } else if (!accountExists) {
-        alert("帳號錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）");
-      } else {
-        alert("密碼錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）");
-      }
+      console.log(matchedUser);
+      return;
+    }
+
+    const accountExists = validUsers.some((user) => user.account === account);
+    const passwordMatches = validUsers.some(
+      (user) => user.password === password
+    );
+
+    if (!accountExists && !passwordMatches) {
+      alert(
+        "帳號密碼錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）"
+      );
+    } else if (!accountExists) {
+      alert(
+        "帳號錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）"
+      );
+    } else if (!passwordMatches) {
+      alert(
+        "密碼錯誤(為方便展示，教練帳號:coach使用者帳號:member，密碼皆為123）"
+      );
     }
   };
 
+  //google登入
+  const handleGoogleLoginSuccess = (credentialResponse) => {
+    const decoded = jwtDecode(credentialResponse.credential);
+    console.log("使用者資料：", decoded);
+  };
+  const handleGoogleLoginError = () => {
+    console.log("登入失敗");
+  };
   return (
     <section className="MemberLogin">
       <form className="MemberLogin-form" onSubmit={handleLogin}>
@@ -91,7 +97,6 @@ function MemberLogin() {
               <label className="password-label">密碼</label>
 
               <div className="input-eye">
-                {" "}
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="請輸入密碼"
@@ -150,6 +155,14 @@ function MemberLogin() {
             <span className="login-text">登入</span>
             <img src="./images/search.svg" alt="" />
           </button>
+          <div className="googleLogin">
+          <GoogleOAuthProvider clientId="182373470143-vge7k40i9mn15d0fmv5c3is52jublrlp.apps.googleusercontent.com">
+            <GoogleLogin
+              onSuccess={handleGoogleLoginSuccess}
+              onError={handleGoogleLoginError}
+            />
+          </GoogleOAuthProvider>
+          </div>
         </div>
 
         <div className="MemberLogin-option">

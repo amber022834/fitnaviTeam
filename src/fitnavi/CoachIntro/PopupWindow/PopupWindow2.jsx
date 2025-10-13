@@ -12,6 +12,11 @@ export default function PopupWindow2({ onClose, onNext, onPrev }) {
                         alt="close-modal"
                         onClick={onClose} />
                     <h2>確認選擇方案</h2>
+<stripe-buy-button
+  buy-button-id="buy_btn_1SDR7tE5vRiJkgZYfR5WFac8"
+  publishable-key="pk_test_51SDQw3E5vRiJkgZYn2g7dvtt8yMY3vNCqdPCYgR613FBwwIDdNfaD3DyA3xf0bzOQw7LYVNvJOgvJVAnceSTXZ0g00hkHQ14PW"
+>
+</stripe-buy-button>
 
                     {/* 課程方案 */}
                     <div className="course-plan">
