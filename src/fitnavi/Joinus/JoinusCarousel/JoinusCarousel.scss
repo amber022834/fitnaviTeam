@@ -27,7 +27,7 @@
 
 
         .card {
-            top: 50%;
+            top: 60%;
             left: 50%;
 
             transform: translate(200%, -30%) scale(0.95); // 預設放在視口右外
@@ -35,6 +35,7 @@
             opacity: 0.35;
             position: absolute;
             z-index: 1;
+            
 
             @media (max-width: 1024px) {
                 top: 60% !important;
@@ -45,7 +46,8 @@
         }
 
         .card-center {
-            top: 50%;
+            // top: 50%;
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -30%) rotate(0deg);
             opacity: 1;
@@ -53,7 +55,8 @@
         }
 
         .card-left {
-            top: 50%;
+             // top: 50%;
+             top: 60%;
             left: 50%;
             transform: translate(-200%, -10%) rotate(-10deg); // 預設位置
             opacity: 0.5;
@@ -61,7 +64,8 @@
         }
 
         .card-right {
-            top: 50%;
+             // top: 50%;
+             top: 60%;
             left: 50%;
             transform: translate(90%, -10%) rotate(10deg);
             opacity: 0.5;
